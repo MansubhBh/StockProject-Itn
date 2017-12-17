@@ -1,0 +1,3 @@
+com\mansubh\hellospring\configuration\SecurityConfiguration.class
+com\mansubh\hellospring\controller\DefaultController.class
+com\mansubh\hellospring\configuration\SecurityWebApplicationInitializer.class
