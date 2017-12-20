@@ -19,7 +19,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">products <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
               <li><a href="<c:url value="/addProduct" />">Add products</a></li>
-            <li><a href="#">View Products</a></li>
+              <li><a href="<c:url value="/viewProduct"/>">View Products</a></li>
+            <li><a href="<c:url value="/addCategory" />">Add Category</a></li>
 <!--            <li><a href="#">Something else here</a></li>-->
           </ul>
         </li>

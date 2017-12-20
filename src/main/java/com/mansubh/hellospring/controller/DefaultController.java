@@ -5,14 +5,19 @@
  */
 package com.mansubh.hellospring.controller;
 
+import com.mansubh.hellospring.dao.CategoryDao;
+import com.mansubh.hellospring.entity.Category;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -21,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DefaultController {
     
+    @Autowired
+    private CategoryDao categoryDao;
     
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
     public String index(){
@@ -39,9 +46,32 @@ public class DefaultController {
     }
     
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
-    public String addProduct(){
+    public String addProduct(Model model){
+        model.addAttribute("categories", categoryDao.getAll());
         return "addproduct";
     }
+    @RequestMapping(value = "/addCategory", method = RequestMethod.GET)
+    public String addCategory(Model model){
+        model.addAttribute("categories" , categoryDao.getAll());
+        return "addCategory";
+    }
+    
+    @RequestMapping(value = "/saveCategory", method = RequestMethod.POST)
+    public String saveCategory(@RequestParam("catName") String catName,
+                                @RequestParam("catDesc") String catDesc){
+        
+        Category cat = new Category(1, catName, catDesc);
+        int result = categoryDao.insert(cat);
+        System.out.println("result is " + result);
+       return "redirect:addCategory";
+        
+        
+    }
+    
+    
+    
+    
+    
     
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest req, HttpServletResponse res){

@@ -65,12 +65,11 @@ public class Product implements Serializable {
     @Column(name = "product_cost")
     private double productCost;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "added_date")
+    @Column(name = "added_date", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date addedDate;
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Category categoryId;
 
     public Product() {

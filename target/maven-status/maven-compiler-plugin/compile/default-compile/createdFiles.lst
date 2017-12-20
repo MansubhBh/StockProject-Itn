@@ -1,3 +1,10 @@
-com\mansubh\hellospring\configuration\SecurityConfiguration.class
-com\mansubh\hellospring\controller\DefaultController.class
 com\mansubh\hellospring\configuration\SecurityWebApplicationInitializer.class
+com\mansubh\hellospring\entity\Category.class
+com\mansubh\hellospring\controller\DefaultController.class
+com\mansubh\hellospring\dao\CategoryDao.class
+com\mansubh\hellospring\controller\ProductController.class
+com\mansubh\hellospring\dao\ProductDao.class
+com\mansubh\hellospring\configuration\SecurityConfiguration.class
+com\mansubh\hellospring\dao\impl\CategoryDaoImpl.class
+com\mansubh\hellospring\dao\impl\ProductDaoImpl.class
+com\mansubh\hellospring\entity\Product.class
